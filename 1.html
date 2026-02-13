@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Be My Valentine</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 450px;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    
+    #noBtn {
+      background: #ddd;
+    }
+    #buttons {
+  position: relative;
+  z-index: 10; /* higher than the GIF */
+}
+
+    #yayMessage {
+      font-size: 28px;
+      color: #ff4d6d;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+      animation: pop 0.5s ease forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    #gifContainer {
+      margin-top: 20px;  pointer-events: none;
+    }
+
+    #gifContainer img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2 id="heading">Will you be my Valentine? ❤️</h2>
+
+  <div id="gifContainer">
+  <!-- First GIF -->
+  <img id="valentineGif" src="assets/valentine.gif" alt="Valentine GIF" style="width:100%; border-radius:15px;">
+</div>
+
+
+  <div id="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <div id="yayMessage">YAY! ❤️</div>
+</div>
+
+<script async src="https://tenor.com/embed.js"></script>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const buttons = document.getElementById("buttons");
+  const heading = document.getElementById("heading");
+  const gifContainer = document.getElementById("gifContainer");
+  const yayMessage = document.getElementById("yayMessage");
+
+  let yesSize = 18;
+  let clickCount = 0;
+
+ const funnyTexts = [
+    "Are you sure?",
+    "Really sure?",
+    "Think again 😢",
+    "Maybe you misclicked?",
+    "What if I bring <br> chocolate? 🍫", // line break
+    "Pretty please?",
+    "Please pookie?"
+];
+
+
+  function showSuccess() {
+    // Hide buttons
+    buttons.style.display = "none";
+    heading.style.display = "none";
+
+    // Show YAY text
+    yayMessage.style.display = "block";
+
+       document.getElementById("valentineGif").src = "assets/bubu-dudu-kisses.gif";
+
+
+    const script = document.createElement("script");
+    script.src = "https://tenor.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
+
+  noBtn.addEventListener("click", () => {
+
+    yesSize += 6;
+    yesBtn.style.fontSize = yesSize + "px";
+
+     if (clickCount < funnyTexts.length) {
+        noBtn.innerHTML = funnyTexts[clickCount]; // use innerHTML instead of textContent
+    }
+    else if (clickCount < funnyTexts.length + 3) {
+      noBtn.textContent = "NO";
+    }
+    else {
+      noBtn.textContent = "YES";
+      noBtn.style.background = "#ddd";
+      // noBtn.style.color = "white";
+      noBtn.onclick = showSuccess;
+    }
+
+    clickCount++;
+  });
+
+  yesBtn.addEventListener("click", showSuccess);
+</script>
+
+</body>
+</html>
