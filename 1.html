@@ -38,33 +38,18 @@
       transition: 0.3s ease;
     }
 
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    
+    #noBtn {
+      background: #ddd;
+    }
     #buttons {
-    display: flex;
-    flex-direction: column; /* stack buttons vertically */
-    align-items: center;    /* center horizontally */
-    gap: 15px;              /* space between Yes and No */
-    margin-top: 20px;
-}
-
-#yesBtn {
-    background-color: rgb(255, 65, 97);
-    color: white;
-    font-size: 18px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#noBtn {
-    background-color: lightgray;
-    font-size: 18px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  position: relative;
+  z-index: 10; /* higher than the GIF */
 }
 
     #yayMessage {
@@ -130,7 +115,7 @@
     "Really sure?",
     "Think again 😢",
     "Maybe you misclicked?",
-    "What if I bring chocolate? 🍫", // line break
+    "What if I bring <br> chocolate? 🍫", // line break
     "Pretty please?",
     "Please pookie?",
     "Are you absolutely sure? 🥺",
