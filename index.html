@@ -163,26 +163,18 @@
 ];
 
 
-  function showSuccess() {
-    // Hide buttons
-    buttons.style.display = "none";
-    heading.style.display = "none";
+function showSuccess() {
+  buttons.style.display = "none";
 
-    // Show YAY text
-    yayMessage.style.display = "block";
+  yayMessage.style.display = "block";
 
-       document.getElementById("valentineGif").src = "assets/bubu-dudu-kisses.gif";
-
-
-    const script = document.createElement("script");
-    script.src = "https://tenor.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }
+  const gif = document.getElementById("valentineGif");
+  gif.src = "assets/s.gif";
+}
 
   noBtn.addEventListener("click", () => {
 
-    yesSize += 6;
+    yesSize += 10;
     yesBtn.style.fontSize = yesSize + "px";
 
      if (clickCount < funnyTexts.length) {
